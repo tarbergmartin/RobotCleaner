@@ -41,8 +41,8 @@ namespace RobotCleaner.Core
         {
             var numOfCommands = int.Parse(Console.ReadLine());
 
-            if (numOfCommands <= 0)
-                numOfCommands = 1;
+            if (numOfCommands < 0)
+                numOfCommands = 0;
 
             else if (numOfCommands > _maxCommands)
                 numOfCommands = _maxCommands;
