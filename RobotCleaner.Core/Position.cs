@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RobotCleaner.Core
 {
+    /// <summary>
+    /// Override methods Equals and GetHashCode to ensure that HashSet work as expected
+    /// </summary>
     public class Position : IEquatable<Position>
     {
         public Position(int x, int y)

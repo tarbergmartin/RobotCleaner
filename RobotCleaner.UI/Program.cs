@@ -8,50 +8,28 @@ namespace RobotCleaner.UI
     {
         static void Main(string[] args)
         {
-            // The max and min coordinates that the robot will use
+            // The max and min coordinates used for the office area
             var cordRange = new CoordinateRange(-100000, 100000);
+
+            // Configure the manager that handles user input
             var commandManager = new CommandManager(
-                maxCommands: 10000, 
+                maxCommands: 10000,
+                maxSteps: 100000,
                 rangeX: cordRange, 
                 rangeY: cordRange);
                
             // Collect input from user
             var commandModel = commandManager.CollectInput();
 
+            // Configure the robot's settings
+            var robot = new Robot(
+                commandModel,
+                new Map(rangeX: cordRange, rangeY: cordRange),
+                new MovementTracker(commandModel.StartingPosition));
 
-            var startingPosition = new Position(-100000, -100000);
-            var movementTracker = new MovementTracker(startingPosition);
-            var map = new Map(100000, -100000, 100000, -100000);
-
-            var commands = new List<Command>
-            {
-                new Command
-                {
-                    Direction = Direction.South,
-                    Steps = 2,
-                },
-
-                new Command
-                {
-                    Direction = Direction.West,
-                    Steps = 5
-                },
-                new Command
-                {
-                    Direction = Direction.East,
-                    Steps = 4
-                }
-            };
-
-            // Direction  (E, W, S, N)
-            // and steps (0 < s < 100.000)
-
-            var robot = new Robot(commands, map, startingPosition, movementTracker);
+            // Run robot commands and print report
             robot.RunCommands();
             robot.PrintCleaningReport();
-            Console.ReadLine();
-
-            Console.WriteLine("Hello World!");
         }
     }
 }

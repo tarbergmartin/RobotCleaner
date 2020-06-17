@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RobotCleaner.Core
+﻿namespace RobotCleaner.Core
 {
     public class Map
     {
-        public Map(int maxX, int minX, int maxY, int minY)
+        public Map(CoordinateRange rangeX, CoordinateRange rangeY)
         {
-            MaxX = maxX;
-            MinX = minX;
-            MaxY = maxY;
-            MinY = minY;
+            MaxX = rangeX.Max;
+            MinX = rangeX.Min;
+            MaxY = rangeY.Max;
+            MinY = rangeY.Min;
         }
 
         public int MaxX { get; }

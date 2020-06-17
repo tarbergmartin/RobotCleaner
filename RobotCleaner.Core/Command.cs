@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RobotCleaner.Core
+﻿namespace RobotCleaner.Core
 {
     public class Command
     {

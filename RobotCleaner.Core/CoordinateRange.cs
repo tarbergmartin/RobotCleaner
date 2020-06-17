@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RobotCleaner.Core
+﻿namespace RobotCleaner.Core
 {
     public class CoordinateRange
     {
@@ -17,11 +13,6 @@ namespace RobotCleaner.Core
         public bool IsWithin(int value)
         {
             return value >= Min && value <= Max;
-        }
-
-        public int GenerateValue()
-        {
-            return new Random().Next(Min, Max);
         }
     }
 }

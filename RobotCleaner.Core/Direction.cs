@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RobotCleaner.Core
+﻿namespace RobotCleaner.Core
 {
-   public enum Direction
+    public enum Direction
     {
         North, East, West, South
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RobotCleaner.Core
 {
@@ -10,11 +9,11 @@ namespace RobotCleaner.Core
         private readonly MovementTracker _movementTracker;
         private Position _currentPosition;
 
-        public Robot(List<Command> commands, Map map, Position startPosition, MovementTracker movementTracker)
+        public Robot(CommandModel commandModel, Map map, MovementTracker movementTracker)
         {
-            _commands = commands;
+            _commands = commandModel.Commands;
+            _currentPosition = commandModel.StartingPosition;
             _map = map;
-            _currentPosition = startPosition;
             _movementTracker = movementTracker;
         }
 
@@ -26,7 +25,7 @@ namespace RobotCleaner.Core
                 {
                     Move(command.Direction);
 
-                    // If robot attempted to go outside the map, adjust postion and stop further movement
+                    // If robot attempts to go outside of the map, adjust position and stop further movement
                     if (!EnsureInsideMap())
                         break;
 
@@ -62,15 +61,15 @@ namespace RobotCleaner.Core
         private bool EnsureInsideMap()
         {
             var isValidPosition = true;
-            var positionCopy = new Position(_currentPosition.X, _currentPosition.Y);
+            var copyOfPosition = new Position(_currentPosition.X, _currentPosition.Y);
 
             if (_currentPosition.X > _map.MaxX) _currentPosition = new Position(_map.MaxX, _currentPosition.Y);
             if (_currentPosition.X < _map.MinX) _currentPosition = new Position(_map.MinX, _currentPosition.Y);
             if (_currentPosition.Y > _map.MaxY) _currentPosition = new Position(_currentPosition.X, _map.MaxY);
             if (_currentPosition.Y < _map.MinY) _currentPosition = new Position(_currentPosition.X, _map.MinX);
 
-            // If postion has changed, the robot tried to go outside of the map and that means the position is has changed and is invalid
-            if (_currentPosition.X != positionCopy.X || _currentPosition.Y != positionCopy.Y)
+            // This checks if the robot attempted to go outside the map
+            if (_currentPosition.X != copyOfPosition.X || _currentPosition.Y != copyOfPosition.Y)
                 isValidPosition = false;
 
             return isValidPosition;
