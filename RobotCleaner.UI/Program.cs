@@ -1,6 +1,4 @@
 ﻿using RobotCleaner.Core;
-using System;
-using System.Collections.Generic;
 
 namespace RobotCleaner.UI
 {
@@ -24,7 +22,7 @@ namespace RobotCleaner.UI
             // Configure the robot's settings
             var robot = new Robot(
                 commandModel,
-                new Map(rangeX: cordRange, rangeY: cordRange),
+                new Map(cordRange, cordRange),
                 new MovementTracker(commandModel.StartingPosition));
 
             // Run robot commands and print report

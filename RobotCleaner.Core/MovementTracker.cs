@@ -22,11 +22,6 @@ namespace RobotCleaner.Core
 
         public void PrintMovementHistory()
         {
-            foreach (var hej in _trackedPositions)
-            {
-                Console.WriteLine($"x = {hej.X}, y = {hej.Y}");
-            }
-
             Console.WriteLine($"=> Cleaned: {_trackedPositions.Count}");
             Console.ReadLine();
         }

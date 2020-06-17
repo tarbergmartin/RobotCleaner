@@ -39,7 +39,6 @@ namespace RobotCleaner.Core
 
         private int GetNumOfCommands()
         {
-            Console.WriteLine("How many commands will the robot perform?");
             var numOfCommands = int.Parse(Console.ReadLine());
 
             if (numOfCommands <= 0)
@@ -53,7 +52,6 @@ namespace RobotCleaner.Core
 
         private Position GetStartingPosition()
         {
-            Console.WriteLine("What's the starting position?");
             var inputArray = Console.ReadLine().Split(' ');
 
             if (inputArray.Length == 2)
@@ -79,7 +77,6 @@ namespace RobotCleaner.Core
 
         private Command GetCommandInstructions()
         {
-            Console.WriteLine("Please supply a command:");
             var inputArray = Console.ReadLine().Split(' ');
 
             if (inputArray.Length == 2)
