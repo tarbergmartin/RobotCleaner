@@ -66,7 +66,7 @@ namespace RobotCleaner.Core
             if (_currentPosition.X > _map.MaxX) _currentPosition = new Position(_map.MaxX, _currentPosition.Y);
             if (_currentPosition.X < _map.MinX) _currentPosition = new Position(_map.MinX, _currentPosition.Y);
             if (_currentPosition.Y > _map.MaxY) _currentPosition = new Position(_currentPosition.X, _map.MaxY);
-            if (_currentPosition.Y < _map.MinY) _currentPosition = new Position(_currentPosition.X, _map.MinX);
+            if (_currentPosition.Y < _map.MinY) _currentPosition = new Position(_currentPosition.X, _map.MinY);
 
             // This checks if the robot attempted to go outside the map
             if (_currentPosition.X != copyOfPosition.X || _currentPosition.Y != copyOfPosition.Y)
